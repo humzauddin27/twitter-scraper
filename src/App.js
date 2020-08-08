@@ -41,7 +41,11 @@ class App extends Component {
         </header>
         <Search handleOnClick={this.handleOnClick} />
         {loading ? <LoadingSpinner /> : <Display tweets={tweets} />}
-        <p> {tweets.length ? `Displaying ${tweets.length} tweets` : null} </p>
+        <p>
+          {tweets.length && !loading
+            ? `Displaying ${tweets.length} tweets`
+            : null}
+        </p>
       </div>
     );
   }
