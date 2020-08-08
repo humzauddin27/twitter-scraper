@@ -16,6 +16,12 @@ class Display extends Component {
   sortTweets(tweets) {
     const arr = tweets
       .slice()
+      .map(tweet => {
+        if (tweet && tweet.retweeted_status) {
+          tweet.favorite_count = tweet.retweeted_status.favorite_count;
+        }
+        return tweet;
+      })
       .sort(this.sortBy("retweet_count", "favorite_count"));
     return arr;
   }
@@ -46,8 +52,13 @@ class Display extends Component {
                 <p className="text"> {tweet.text} </p>
               </a>
               <div className="subsection">
-                <p> {tweet.retweet_count} </p>
-                <p> {tweet.favorite_count} </p>
+                <p>
+                  <span className="rts">{tweet.retweet_count}</span> Retweets
+                </p>
+                <p>
+                  <span className="favs">{tweet.favorite_count} </span>
+                  Favorites
+                </p>
               </div>
             </div>
           );

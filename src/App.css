@@ -11,5 +11,6 @@
   font-size: 28px;
 }
 
-body {
+.App p {
+  margin-top: 5px;
 }

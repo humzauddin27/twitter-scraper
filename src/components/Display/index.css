@@ -36,16 +36,21 @@ a:hover {
 .subsection {
   display: flex;
   align-items: center;
+  max-height: 30px;
 }
 
 .subsection p {
   padding-right: 10px;
 }
 
-.text {
-  margin: 0;
-}
-
 .name {
   font-weight: bold;
+}
+
+.favs {
+  color: #e0245e;
+}
+
+.rts {
+  color: #16c063;
 }

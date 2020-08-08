@@ -2,12 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  width: 425px;
   margin-top: 10px;
 }
 
 .input {
   font-size: 16px;
   padding: 5px;
+  width: 65%;
 }
 
 .search-button {
