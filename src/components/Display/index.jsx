@@ -32,6 +32,7 @@ class Display extends Component {
     return (
       <div className="tweets">
         {sortedTweets.map((tweet, i) => {
+          let d = new Date(tweet.created_at).toString().substring(3, 11);
           return (
             <div className="tweet" key={i}>
               <a
@@ -42,6 +43,7 @@ class Display extends Component {
                 <div className="subsection">
                   <p className="name"> {tweet.user.name} </p>
                   <p className="user"> @{tweet.user.screen_name} </p>
+                  <p className="date"> {d} </p>
                 </div>
               </a>
               <a

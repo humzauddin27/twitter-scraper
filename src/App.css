@@ -9,6 +9,18 @@
   color: white;
   padding: 20px;
   font-size: 28px;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.App-header img {
+  margin-right: auto;
+  height: 45px;
+}
+
+.App-header div {
+  margin-right: auto;
+  padding-right: 30px;
 }
 
 .App p {

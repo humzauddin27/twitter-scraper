@@ -8,7 +8,8 @@ import "./App.css";
 class App extends Component {
   state = {
     tweets: [],
-    loading: false
+    loading: false,
+    error: null
   };
 
   handleOnClick = searchValue => {
@@ -25,25 +26,39 @@ class App extends Component {
       .then(res => res.json())
       .then(response => {
         this.setState({
+          error: null,
           tweets: response,
           loading: false
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        this.setState({
+          error: err,
+          loading: false,
+          tweets: []
         });
       });
   };
 
   render() {
-    const { tweets, loading } = this.state;
-
+    const { tweets, loading, error } = this.state;
+    const iconImage = require(`./assets/images/twitter_icon.png`);
+    console.log(error);
     return (
       <div className="App">
         <header className="App-header">
+          <img src={String(iconImage)} alt="icon" />
           <div>tweet sweep</div>
         </header>
         <Search handleOnClick={this.handleOnClick} />
         {loading ? <LoadingSpinner /> : <Display tweets={tweets} />}
         <p>
-          {tweets.length && !loading
+          {tweets.length && !loading && !error
             ? `Displaying ${tweets.length} tweets`
+            : null}
+          {error && !loading && tweets.length === 0
+            ? `An error occured. Please try again or refresh the page`
             : null}
         </p>
       </div>
